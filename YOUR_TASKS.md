@@ -20,6 +20,15 @@ The app's code lives in `C:\Users\nikhi\Desktop\raktdoot` (local git only). The 
 
 ## 2. Voice calls: needed for "the judge's phone rings"
 
+**We switched to Sarvam.** Gnani Agents rejects personal email addresses and this account has 0 credits for it. The RaktDoot calling agent is already built and committed (version 2) in your Sarvam dashboard (indus.sarvam.ai, Voice Agents, Agents, "RaktDoot"). The deploy session is adding a `SarvamCaller` to the app. The Gnani steps below are kept only as a fallback.
+
+- [ ] **Rent a Sarvam phone number**: Phone numbers, then Rent from Sarvam. ₹59 a month at the launch price, plus about ₹0.2 per 30 seconds of calls, from your Sarvam credits.
+- [ ] **Create a workspace API key** in Sarvam's settings, and note your org id and workspace id (shown with the API key).
+- [ ] **Store them yourself** from `C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server`, one `serverpod cloud password set NAME` each. The deploy session will give you the exact names; expect `sarvamApiKey`, `sarvamOrgId`, `sarvamWorkspaceId`, `sarvamConnectionId`, `sarvamAgentNumber`, plus `demoBankNumber`, then `voiceProvider` = `sarvam`. Then `serverpod cloud deploy`.
+- [ ] **Test-call yourself first** with the agent's Test agent button in the Sarvam dashboard.
+
+**Gnani fallback (only if Sarvam doesn't work out):**
+
 - [ ] **Open Gnani with the hackathon link** and sign up: https://app.gnani.ai/voice?utm_source=hackbriven&utm_medium=hackathon&utm_campaign=hackathon_nov2026
 - [ ] **Ask Gnani for three things:**
   1. an Inya API key
