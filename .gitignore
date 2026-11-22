@@ -1,0 +1,13 @@
+# Old snapshot of the app. The real Serverpod project is C:\Users\nikhi\Desktop\raktdoot
+# (the build guide asks for a folder path without spaces).
+raktdoot/
+
+# Office lock files and OS clutter
+~$*
+Thumbs.db
+.DS_Store
+
+# Never commit secrets
+.env
+*.key
+passwords.yaml

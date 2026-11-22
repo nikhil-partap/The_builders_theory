@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-buttons="solid" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RaktDoot: AI blood helpline for patients' families</title>
+<meta name="description" content="Tell RaktDoot the blood group and hospital. Its voice agent calls nearby blood banks in Hindi and holds the units. Free for families.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RaktDoot: AI blood helpline for patients' families">
+<meta property="og:description" content="A voice agent that calls every blood bank within 25 km and holds the units for you.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23b3172b'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='17' font-weight='700' fill='%23fff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400..700&family=JetBrains+Mono:wght@400..500&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #ffffff; --p-surface: #f4f4f2; --p-ink: #1f2b4d; --p-muted: #5f6984;
+  --p-accent: #b3172b; --p-accent-ink: #ffffff; --p-action: #b3172b; --p-action-ink: #ffffff;
+  --p-inv-bg: #1f2b4d; --p-inv-surface: #2c3859; --p-inv-ink: #ffffff; --p-inv-muted: #a2a8b8;
+  --p-inv-accent: #ffffff; --p-inv-accent-ink: #1f2b4d; --p-inv-action: #ffffff; --p-inv-action-ink: #1f2b4d;
+  --font-display: "Epilogue", system-ui, sans-serif;
+  --font-text: "Epilogue", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.045em;
+  --ly-scale: 0.97;
+}
+</style>
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="assets/ui/voice/fragment.css">
+<link rel="stylesheet" href="assets/diagrams/diagram.css">
+<link rel="stylesheet" href="page.css?v=14">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
+</head>
+<body>
+<!-- type: software
+     deal: hero split, nav nav-centre-less bar, close close-type, footer footer-columns, rhythm space, buttons solid, mark initial
+     palette: brand (white, navy ink, blood red accent) · type: epilogue · moment: liquid-type on the statement -->
+
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">R</span>RaktDoot</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="#how">How it works</a></div>
+      <div class="nav__item"><a class="nav__link" href="#donors">Donors</a></div>
+      <div class="nav__item"><a class="nav__link" href="#pricing">Hospitals</a></div>
+      <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#try">Find blood</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <h1 id="hero-h">The AI helpline that finds blood in minutes</h1>
+        <p class="hero__lead t-lead">Tell us the blood group and hospital. Our voice agent calls every blood bank within 25&nbsp;km in Hindi and holds the units for you.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#try">Find blood<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="#donors">Sign up as a donor</a>
+        </div>
+      </div>
+      <div class="hero__media span-7 start-6 rd-media">
+        <img src="img/corridor.jpg" width="1280" height="1707" alt="A quiet hospital corridor with warm ceiling lights and a row of waiting chairs" style="--ly-pos: 30% 55%" fetchpriority="high" data-source="stand-in" data-subject="hospital corridor">
+        <div class="rd-phone" aria-label="The RaktDoot app during a call to a blood bank">
+          <div class="rd-phone__screen">
+            <div class="rd-phone__status"><span class="mono" data-clock>11:02</span><span class="rd-phone__notch" aria-hidden="true"></span><span class="rd-phone__sig" aria-hidden="true"></span></div>
+            <p class="rd-phone__req"><b>A+</b> red cells · 2 units</p>
+            <div class="ui ui-panel ui-voice rd-voice" data-ui="voice" data-ui-loop data-ui-opts='{"lines":["क्या A पॉज़िटिव के 2 यूनिट हैं?","हाँ, 11:40 तक होल्ड कर दिया।"]}'>
+              <div class="ui-voice__top">
+                <span class="ui-chip ui-chip--ink">On a call</span>
+                <span class="ui-spacer"></span>
+                <span class="ui-voice__time" data-voice-time>00:41</span>
+              </div>
+              <div class="ui-voice__orb" data-voice-orb></div>
+              <div class="ui-voice__who"><span class="ui-voice__name">RaktDoot</span><span class="ui-voice__with">with Arogya Blood Centre</span></div>
+              <div class="ui-voice__cap" data-voice-cap lang="hi">क्या A पॉज़िटिव के 2 यूनिट हैं?</div>
+              <div class="ui-voice__bar">
+                <span class="ui-voice__btn" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 16 16"><rect x="6" y="2" width="4" height="8" rx="2"/><path d="M3.5 8a4.5 4.5 0 0 0 9 0M8 12.5V14"/></svg></span>
+                <span class="ui-voice__wave" aria-hidden="true"><i style="--h:4"></i><i style="--h:7"></i><i style="--h:12"></i><i style="--h:9"></i><i style="--h:16"></i><i style="--h:11"></i><i style="--h:20"></i><i style="--h:14"></i><i style="--h:8"></i><i style="--h:17"></i><i style="--h:12"></i><i style="--h:6"></i><i style="--h:10"></i><i style="--h:18"></i><i style="--h:13"></i><i style="--h:7"></i></span>
+                <span class="ui-voice__btn ui-voice__end" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 16 16"><path d="M2.2 9.6c3.4-2.6 8.2-2.6 11.6 0l-1.1 1.9-2.5-.9V8.9a7.5 7.5 0 0 0-4.4 0v1.7l-2.5.9z"/></svg></span>
+              </div>
+            </div>
+            <ul class="rd-phone__list">
+              <li><span>Sanjeevani · 3.1 km</span><em>No stock</em></li>
+              <li class="is-on"><span>Arogya · 5.4 km</span><em>Holding 2</em></li>
+              <li><span>Sector 22 · 8.9 km</span><em>Released</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="try" aria-labelledby="try-h">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <h2 id="try-h">Watch the agent find blood. <span class="muted">Pick a group and press the button.</span></h2>
+        </div>
+      </div>
+      <div class="grid rd-try">
+        <form class="rd-req span-4" id="request" novalidate aria-label="Demo blood request">
+          <fieldset class="rd-field">
+            <legend class="t-label muted">Blood group</legend>
+            <div class="rd-groups" id="groups">
+              <label><input type="radio" name="group" value="O-"><span>O−</span></label>
+              <label><input type="radio" name="group" value="O+"><span>O+</span></label>
+              <label><input type="radio" name="group" value="A-"><span>A−</span></label>
+              <label><input type="radio" name="group" value="A+" checked><span>A+</span></label>
+              <label><input type="radio" name="group" value="B-"><span>B−</span></label>
+              <label><input type="radio" name="group" value="B+"><span>B+</span></label>
+              <label><input type="radio" name="group" value="AB-"><span>AB−</span></label>
+              <label><input type="radio" name="group" value="AB+"><span>AB+</span></label>
+            </div>
+          </fieldset>
+          <div class="rd-field rd-row">
+            <span class="t-label muted" id="units-k">Units</span>
+            <div class="rd-stepper" role="group" aria-labelledby="units-k">
+              <button type="button" id="unitsDown" aria-label="One unit fewer">−</button>
+              <output id="units" aria-live="polite">2</output>
+              <button type="button" id="unitsUp" aria-label="One unit more">+</button>
+            </div>
+          </div>
+          <div class="rd-field">
+            <label class="t-label muted" for="hospital">Hospital</label>
+            <input class="rd-input" id="hospital" name="hospital" value="District Hospital, Gurugram" autocomplete="organization" aria-describedby="hospital-err">
+            <p class="field__error" id="hospital-err" hidden>Write the hospital's name.</p>
+          </div>
+          <button class="btn btn--primary rd-go" type="submit" id="findBtn">Find blood</button>
+          <p class="t-small muted">A demo with made-up blood banks. No real calls are placed.</p>
+        </form>
+
+        <div class="rd-log span-7 start-6" id="log" aria-live="off">
+          <div class="rd-log__head">
+            <span class="rd-log__title" id="logTitle">A+ red cells · 2 units</span>
+            <span class="rd-log__state" id="logState">Ready</span>
+          </div>
+          <div class="rd-log__body" id="logBody">
+            <ol class="rd-calls" id="calls"></ol>
+            <div id="donorsRun" hidden></div>
+            <div class="rd-go-card" id="gocard" hidden></div>
+          </div>
+          <p class="sr-only" id="announce" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rd-why" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="grid rd-why__grid">
+        <div class="span-7" data-moment="liquid-type" data-moment-opts='{"strength": 1.1}'>
+          <h2 id="why-h" class="mo-lt__type rd-statement">28 lakh units, thrown away</h2>
+          <p class="t-lead rd-why__lead">That is how much blood India discarded in five years<sup><a href="#src-1">1</a></sup>, while families phoned banks one by one. About 22% of banks rarely update the national stock portal<sup><a href="#src-2">2</a></sup>, so RaktDoot checks every listing by phone.</p>
+        </div>
+        <div class="frame frame--photo frame--portrait span-4 start-9 rd-why__photo">
+          <img class="frame__img" src="img/blood-bags.jpg" width="1280" height="1707" alt="Two blood bags in sealed pouches marked donor and recipient" loading="lazy" data-source="stand-in" data-subject="blood bags">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="grid rd-how">
+        <div class="span-5">
+          <div class="section-head">
+            <h2 id="how-h">How a request becomes blood on hold</h2>
+          </div>
+          <ol class="rd-steps">
+            <li>
+              <span class="step-num">1</span>
+              <h3>Ranks the nearest banks</h3>
+              <p>By distance, and by how recently each one updated its stock.</p>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <h3>Calls them in Hindi</h3>
+              <p>It says it is an AI, then asks for the group, component and units.</p>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <h3>Holds the units</h3>
+              <p>The family gets the address, the papers to bring and the fee.</p>
+            </li>
+          </ol>
+          <p class="rd-fallback"><b>No stock anywhere?</b> It calls donors nearby who opted in, a few at a time.</p>
+        </div>
+        <div class="panel span-6 start-7 rd-how__panel">
+          <div class="dg" data-diagram><script type="application/json">{"layout": "lanes", "alt": "A request from the hospital goes to the RaktDoot agent, which calls three blood banks at once: one has no stock, one holds two units, one is released.", "input": {"label": "Request", "icon": "ui:hospital", "sub": "A+ · 2 units"}, "core": {"label": "RaktDoot agent", "icon": "ui:bot"}, "lanes": [{"label": "Sanjeevani", "icon": "ui:phone", "sub": "No stock"}, {"label": "Arogya", "icon": "ui:droplet", "done": true, "sub": "Holding 2 units"}, {"label": "Sector 22", "icon": "ui:phone", "sub": "Released"}]}</script></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rd-donors" id="donors" aria-labelledby="donors-h">
+    <div class="wrap">
+      <div class="grid rd-donors__grid">
+        <div class="frame frame--photo span-6 rd-donors__photo">
+          <img class="frame__img" src="img/donation.jpg" width="1280" height="1058" alt="A donor's arm during a platelet donation, with a line running to sample tubes" loading="lazy" data-source="stand-in" data-subject="blood donation" style="object-position: 40% 50%">
+        </div>
+        <div class="span-5 start-8 rd-donors__copy">
+          <h2 id="donors-h">Donors get a call only when they can help</h2>
+          <ul class="rows rd-promises">
+            <li><span class="rows__name">Only for your blood group</span><span class="rows__value">within 10 km</span></li>
+            <li><span class="rows__name">Never twice in a week</span><span class="rows__value">or 3 months after you give</span></li>
+            <li><span class="rows__name">Your number stays hidden</span><span class="rows__value">calls go through us</span></li>
+          </ul>
+          <form class="rd-dform" id="donorForm" novalidate>
+            <div class="field"><label for="dName">Name</label>
+              <input id="dName" name="name" type="text" autocomplete="name" aria-describedby="dName-err">
+              <p class="field__error" id="dName-err" hidden>Write your name.</p></div>
+            <div class="field"><label for="dGroup">Blood group</label>
+              <select id="dGroup" name="group" aria-describedby="dGroup-err">
+                <option value="">Pick one</option>
+                <option>O−</option><option>O+</option><option>A−</option><option>A+</option><option>B−</option><option>B+</option><option>AB−</option><option>AB+</option>
+              </select>
+              <p class="field__error" id="dGroup-err" hidden>Pick your blood group.</p></div>
+            <div class="field rd-dform__wide"><label for="dPhone">Mobile number</label>
+              <input id="dPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" aria-describedby="dPhone-err">
+              <p class="field__error" id="dPhone-err" hidden>Write a 10-digit mobile number.</p></div>
+            <label class="rd-consent rd-dform__wide"><input id="dConsent" type="checkbox" aria-describedby="dConsent-err"><span>I agree to AI voice calls about blood requests near me. Pressing 9 on a call stops them.</span></label>
+            <p class="field__error rd-dform__wide" id="dConsent-err" hidden>Tick the box so we are allowed to call you.</p>
+            <div class="btn-row rd-dform__wide"><button class="btn btn--primary" type="submit">Sign up as a donor</button></div>
+            <p class="rd-dform__done rd-dform__wide" id="donorDone" role="status" hidden></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <div class="grid">
+        <div class="section-head span-5">
+          <h2 id="pricing-h">Free for families. <span class="muted">Hospitals and blood banks pay for the calling.</span></h2>
+          <p class="t-small muted">Blood itself is never sold. Banks may charge only a processing fee, at most ₹1,550 a unit<sup><a href="#src-3">3</a></sup>.</p>
+        </div>
+        <ul class="rows span-6 start-7 rd-payers">
+          <li><span class="rows__name">Families<small>Request blood, any hour</small></span><span class="rows__value">Free</span></li>
+          <li><span class="rows__name">Private hospitals<small>A blood desk that does the phoning</small></span><span class="rows__value">Monthly</span></li>
+          <li><span class="rows__name">Blood banks<small>Donor recall when a group runs low</small></span><span class="rows__value">Per campaign</span></li>
+          <li><span class="rows__name">State blood councils<small>Shortages and units near expiry</small></span><span class="rows__value">Contract</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="grid">
+        <div class="section-head span-4"><h2 id="faq-h">Questions</h2></div>
+        <div class="faq span-7 start-6">
+          <div class="faq__item"><h3>Is RaktDoot live?</h3><p>Not yet. It is a hackathon prototype built on Flutter and Serverpod, and the demo above places no real calls.</p></div>
+          <div class="faq__item"><h3>Can someone use it to scam donors?</h3><p>Every request is checked with the hospital first, donor numbers stay hidden, and the agent never asks anyone for money.</p></div>
+          <div class="faq__item"><h3>Why call banks before donors?</h3><p>Donated blood is tested before use, which takes hours. A bank can hand over a tested unit today.</p></div>
+          <div class="faq__item"><h3>Which languages does it speak?</h3><p>Hindi and English at launch. More Indian languages come through Gnani's voice models.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Find blood</h2>
+        <p>Free for families, in Hindi and English.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="#try">Find blood<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">R</span>RaktDoot</a>
+          <p class="footer__lede">An AI helpline that calls blood banks for patients' families.</p>
+        </div>
+        <div class="span-2 start-7 footer__col"><h3>Product</h3><ul><li><a href="#how">How it works</a></li><li><a href="#try">Try a request</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>People</h3><ul><li><a href="#donors">Donors</a></li><li><a href="#pricing">Hospitals</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Help</h3><ul><li><a href="#faq">Questions</a></li><li><a href="#top">Back to top</a></li></ul></div>
+      </div>
+      <ol class="rd-sources t-small muted">
+        <li id="src-1">NACO data under RTI, reported in 2017: about 28 lakh units of blood and components discarded over five years.</li>
+        <li id="src-2">Observer Research Foundation analysis of stock updates on e-RaktKosh.</li>
+        <li id="src-3">DCGI advisory to states, January 2024, applying NBTC's 2022 processing charges.</li>
+      </ol>
+      <div class="footer__legal">
+        <span>&copy; 2026 RaktDoot team · A prototype for The Builder's Theory 1.0</span>
+        <details class="credits"><summary>Photographs: Beendy234, R. Henrik Nilsson and the U.S. Navy, via Wikimedia Commons</summary><p>Hospital corridor by Beendy234 (CC0); platelet donation by R. Henrik Nilsson (CC BY 4.0); blood bags, U.S. Navy photo by Emily McCamy (public domain). All via Wikimedia Commons.</p></details>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script type="module" src="assets/diagrams/mount.js"></script>
+<script type="module" src="page.js"></script>
+</body>
+</html>
