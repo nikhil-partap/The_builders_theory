@@ -2,24 +2,19 @@
 
 Claude sessions are doing the coding and deployment. These steps need you: your accounts, your sign-ins, your phone, your team. Tick them off as you go.
 
-**Who is doing what right now**
-- **App deploy session** ("HackBriven Serverpod project idea (fork)"): puts the backend and web app on Serverpod Cloud, then adds donor opt-out and the real Gnani caller behind a switch. The app lives in `C:\Users\nikhi\Desktop\raktdoot`.
-- **Landing page session** ("Landing page production-ready"): local fonts, donor form connected to the backend, QR block, share image, smaller photos. Works in `site/`.
-- **Main chat**: keeps track of both and tells you when your next step is due.
+**It's live on Serverpod Cloud** (simulated calls until Gnani is set up):
+- Web app: https://raktdoot.serverpod.space/
+- Donor sign-up (the QR target): https://raktdoot.serverpod.space/#/donor
+- API: https://raktdoot.api.serverpod.space/
+- Server logs and metrics: https://raktdoot.insights.serverpod.space/
+
+The app's code lives in `C:\Users\nikhi\Desktop\raktdoot` (local git only). The landing page in `site/` now sends donor sign-ups to the live API, and its QR code opens the live donor page.
 
 ---
 
-## 1. Do now: this unblocks deployment
+## 1. Deployment
 
-- [ ] **Claim Serverpod Cloud credits** (30-day free trial): http://serverpod.dev/to/hackbriven-console
-- [ ] **Create a project** in the Cloud Console. Name it `raktdoot` and **turn the database on**.
-- [ ] **Sign in from the server folder.** The deploy session is ready and waiting for this. It opens your browser; you finish the sign-in.
-  ```powershell
-  cd C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server
-  serverpod cloud auth login
-  ```
-  If `serverpod` isn't found, use `dart pub global run serverpod_cli:serverpod_cli cloud auth login` instead.
-- [ ] **Tell the deploy session you're signed in** (in its own chat). It then launches, rebuilds, tests the live app and reports the URLs.
+- [x] Cloud account, project with database, sign-in, launch. The deploy session tested a live request through to "Blood on hold".
 - [ ] **Join the hackathon Discord**: http://serverpod.dev/to/hackbriven-discord
   - Ask the organisers whether code written before the event is allowed. That decides whether this app can be used as it is.
 
@@ -36,7 +31,10 @@ Claude sessions are doing the coding and deployment. These steps need you: your 
   serverpod cloud password set gnaniApiKey
   ```
   The names are `gnaniApiKey`, `gnaniTriggerUrl`, `gnaniAgentId`, `gnaniCallbackToken` (any long random string you make up), and `demoBankNumber` (the teammate's phone that plays the blood bank). Last, set `voiceProvider` to `gnani`. Until all of these are set, the app keeps using simulated calls.
-  Then tell the deploy session. It redeploys with real calls. Bank calls only ever dial `demoBankNumber`, never a real blood bank.
+  Then redeploy from the same folder with `serverpod cloud deploy` (or ask the deploy session to). Bank calls only ever dial `demoBankNumber`, never a real blood bank.
+- [ ] **Point Gnani's end-of-call webhook at us**, in the Gnani agent settings:
+  `https://raktdoot.serverpod.space/gnani/callback?token=<your gnaniCallbackToken>&call=<the call id we send in metadata.call_id>`
+  - It must send JSON with `outcome`, `units`, `hold_minutes`, `arrive_minutes` and `transcript` (a list of `{speaker, hindi, english}`).
 - [ ] **Backup if Gnani is slow:** make a Twilio or Exotel trial account and verify your own phone number. Tell the deploy session which one you picked.
 - [ ] **Claim Adaption credits** (mandatory per the guide): https://adaptionlabs.ai/app/auth/referral?ref=hackbriven-hackathon
 
@@ -54,7 +52,8 @@ Claude sessions are doing the coding and deployment. These steps need you: your 
 - [ ] **Only call people who opted in:** teammates and judges who ticked consent. Never let the agent call a real blood bank. This keeps us within TRAI's automated-call rules.
 - [ ] **After deployment, rehearse once end to end** and screen-record a clean run as backup.
   - Careful: the live server waits 7 days before calling the same donor again. Rehearsing with a teammate as donor on the live server blocks them for a week, so keep separate donor numbers for rehearsal and the real demo, or ask the deploy session to reset the cooldown before demo day.
-- [ ] **Print or show the QR code** to the donor sign-up. Claude adds it to the deck's last slide once the live address exists.
+- [ ] **Print or show the QR code** for https://raktdoot.serverpod.space/#/donor. The landing page already shows it; ask Claude to add it to the deck's last slide.
+- [ ] **Host the landing page** if you want it online too. It's static, so GitHub Pages works: repo Settings, Pages, deploy from `main` with the `/site` folder. That makes the site public; it's your call.
 
 ## 5. Housekeeping
 

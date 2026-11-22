@@ -2,9 +2,9 @@
 
 // ---- deployment config: fill these two after deploying ----
 // API_BASE: the Serverpod API server (no trailing slash), e.g. https://raktdoot.api.serverpod.space
-const API_BASE = 'http://localhost:8080';
+const API_BASE = 'https://raktdoot.api.serverpod.space';
 // APP_URL: the Flutter web app (no trailing slash). The QR opens APP_URL + '/#/donor'.
-const APP_URL = 'https://app.raktdoot.example'; // placeholder until deploy
+const APP_URL = 'https://raktdoot.serverpod.space';
 
 // The request demo below uses made-up banks, donors and calls; it sends nothing anywhere.
 // The donor form is real: it calls the Serverpod endpoint donor.register.
