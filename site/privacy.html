@@ -5,7 +5,7 @@
   Written from what the RaktDoot code does today (the donor sign-up, the request flow, AI calls through a
   voice provider, call transcripts and logs on Serverpod Cloud). Decide or confirm each item below, then
   delete this comment:
-    1. CONTACT: every mailto below points at privacy@example.com. Replace it with the team's real inbox.
+    1. CONTACT: every "write to us" link takes its address from CONTACT_EMAIL in contact.js. Set it there.
     2. LEGAL ENTITY: "RaktDoot" is used as the name of the operator. Add the registered company or the
        founders' names and a postal address if you have them.
     3. GRIEVANCE OFFICER: India's DPDP Act 2023 and its rules expect a named contact for complaints.
@@ -44,6 +44,7 @@
 <link rel="stylesheet" href="brand.css">
 <link rel="stylesheet" href="assets/ui/base.css">
 <link rel="stylesheet" href="doc.css?v=2">
+<script src="contact.js" defer></script>
 </head>
 <body>
 <header class="nav">
@@ -127,9 +128,9 @@
 
     <h2 id="your-choices">Your choices</h2>
     <h3>Stop the calls</h3>
-    <p>You can opt out of donor calls at any time. <a href="mailto:privacy@example.com?subject=Stop%20RaktDoot%20donor%20calls">Write to us</a> from any address with the mobile number you signed up with, and we stop calling it.</p>
+    <p>You can opt out of donor calls at any time. <a href="mailto:" data-contact data-subject="Stop RaktDoot donor calls">Write to us</a> from any address with the mobile number you signed up with, and we stop calling it.</p>
     <h3>See, correct or delete your data</h3>
-    <p>You can ask for a copy of what we hold about you, ask us to correct it, or ask us to delete it. <a href="mailto:privacy@example.com?subject=My%20RaktDoot%20data">Write to us</a> with your mobile number. We may call or message that number once to confirm the request is yours, and we act on it within 30 days.</p>
+    <p>You can ask for a copy of what we hold about you, ask us to correct it, or ask us to delete it. <a href="mailto:" data-contact data-subject="My RaktDoot data">Write to us</a> with your mobile number. We may call or message that number once to confirm the request is yours, and we act on it within 30 days.</p>
     <h3>Withdraw consent</h3>
     <p>Withdrawing your consent to AI calls is the same as opting out. It does not affect calls made before you withdrew it.</p>
     <p>We handle personal data under India's Digital Personal Data Protection Act, 2023. If you are not satisfied with our answer, you may complain to the Data Protection Board of India.</p>
@@ -144,7 +145,7 @@
     <p>If we change how we use your data, we will update this page and its date. For a significant change, we will tell signed-up donors before it takes effect.</p>
 
     <h2 id="contact">Contact us</h2>
-    <p>For anything about your data or this policy, <a href="mailto:privacy@example.com">write to us</a>.</p>
+    <p>For anything about your data or this policy, <a href="mailto:" data-contact data-subject="Privacy question">write to us</a>.</p>
   </article>
 </main>
 

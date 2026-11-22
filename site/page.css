@@ -259,3 +259,31 @@ html { caret-color: var(--accent); }
   ul.rows.rd-promises > li { grid-template-columns: 1fr; gap: 2px; }
   ul.rows.rd-promises .rows__value { grid-column: 1; grid-row: auto; text-align: left; justify-self: start; max-width: none; width: auto; white-space: normal; }
 }
+
+/* footer support line */
+.rd-support { color: var(--muted); max-width: 34ch; }
+.rd-support a { color: var(--ink); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent); text-underline-offset: 3px; }
+.rd-support a:hover { color: var(--accent); }
+.rd-support a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* ---------- Hindi / English switch ---------- */
+.rd-lang {
+  flex: none; height: 40px; padding: 0 var(--s-3); margin-left: calc(var(--s-4) - var(--s-8));
+  border: 1px solid var(--line-strong); border-radius: var(--r-btn); background: var(--bg); color: var(--ink);
+  font: 500 15px/1 "Mukta", var(--font-text); cursor: pointer; transition: border-color 0.2s, color 0.2s;
+}
+.rd-lang:hover { border-color: color-mix(in oklab, var(--ink) 35%, transparent); color: var(--accent); }
+.rd-lang:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.rd-lang + .nav__toggle { margin-left: 0; }
+@media (max-width: 1023px) {
+  .rd-lang { margin-left: var(--s-2); height: 44px; }
+  .nav__bar { column-gap: var(--s-2); }
+}
+@media (max-width: 400px) { .rd-lang { padding: 0 10px; font-size: 14px; } }
+/* in Hindi the page sets in Mukta (it carries Latin too), with no negative tracking, which breaks Devanagari */
+html[lang="hi"] {
+  --font-display: "Mukta", "Epilogue", system-ui, sans-serif;
+  --font-text: "Mukta", "Epilogue", system-ui, sans-serif;
+  --display-tracking: 0; --display-tracking-xl: 0;
+}
+html[lang="hi"] :is(h1, h2, h3, .rd-statement) { letter-spacing: 0; line-height: 1.25; }

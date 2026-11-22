@@ -3,7 +3,7 @@
   DRAFT FOR REVIEW. NOT LEGAL ADVICE. Have a lawyer check this before launch.
 
   Decide or confirm each item below, then delete this comment:
-    1. CONTACT: every mailto below points at hello@example.com. Replace it with the team's real inbox.
+    1. CONTACT: every "write to us" link takes its address from CONTACT_EMAIL in contact.js. Set it there.
     2. LEGAL ENTITY: "RaktDoot", "we" and "us" stand for the operator. Name the registered company or
        the founders, and add a postal address, if you have them.
     3. GOVERNING LAW: "the laws of India" with courts left unnamed. Add a city for jurisdiction
@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="brand.css">
 <link rel="stylesheet" href="assets/ui/base.css">
 <link rel="stylesheet" href="doc.css?v=2">
+<script src="contact.js" defer></script>
 </head>
 <body>
 <header class="nav">
@@ -96,7 +97,7 @@
     <p>These terms are governed by the laws of India.</p>
 
     <h2 id="contact">Contact us</h2>
-    <p>Questions about these terms? <a href="mailto:hello@example.com">Write to us</a>.</p>
+    <p>Questions about these terms? <a href="mailto:" data-contact data-subject="Question about the terms">Write to us</a>.</p>
   </article>
 </main>
 

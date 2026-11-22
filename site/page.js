@@ -1,4 +1,5 @@
 // RaktDoot page script: links into the app, the sample call, the partner form and the donor QR.
+import HI from './hi.js';
 
 // ---- where things live: edit these, every link on the page follows ----
 // SITE_URL: the public origin this site is served from (no trailing slash). The donor QR, read by a phone, uses it.
@@ -9,8 +10,8 @@ const ROUTES = {
   donor: '/app/#/donor',  // donor sign-up
   track: '/app/#/r/',     // a request's status page
 };
-// The inbox the "Partner with us" form writes to. REPLACE with the team's real address before launch.
-const PARTNER_EMAIL = 'partners@example.com';
+// The "Partner with us" form writes to the site's one contact address, set in contact.js (CONTACT_EMAIL).
+const PARTNER_EMAIL = window.RAKTDOOT_CONTACT || '';
 
 // The sample call below uses example banks, donors and voices; it calls nobody and sends nothing.
 const $ = (s, el = document) => el.querySelector(s);
@@ -273,3 +274,27 @@ function drawQr() {
   box.innerHTML = `<svg viewBox="-2 -2 ${n + 4} ${n + 4}" shape-rendering="crispEdges" aria-hidden="true"><path fill="#1f2b4d" d="${d}"/></svg>`;
 }
 drawQr();
+
+// ---- Hindi / English: swaps every [data-i18n] element's content; remembers the choice in this browser ----
+const LANG_KEY = 'raktdoot-lang';
+const EN_TITLE = document.title;
+const english = new Map();
+const langBtn = $('#langBtn');
+function setLang(lang) {
+  const hi = lang === 'hi';
+  $$('[data-i18n]').forEach((el) => {
+    if (!english.has(el)) english.set(el, el.innerHTML);
+    const v = hi ? HI[el.dataset.i18n] : english.get(el);
+    if (v != null && el.innerHTML !== v) el.innerHTML = v;
+  });
+  document.documentElement.lang = hi ? 'hi' : 'en-IN';
+  document.title = hi ? HI['meta.title'] : EN_TITLE;
+  langBtn.textContent = hi ? 'English' : 'हिंदी';
+  langBtn.lang = hi ? 'en' : 'hi';
+  langBtn.setAttribute('aria-label', hi ? 'Read in English' : 'हिंदी में पढ़ें');
+  try { localStorage.setItem(LANG_KEY, hi ? 'hi' : 'en'); } catch { /* storage blocked: the choice lasts this visit */ }
+}
+langBtn.addEventListener('click', () => setLang(document.documentElement.lang === 'hi' ? 'en' : 'hi'));
+let startLang = new URLSearchParams(location.search).get('lang');
+if (!startLang) { try { startLang = localStorage.getItem(LANG_KEY); } catch { startLang = null; } }
+if (startLang === 'hi') setLang('hi');
