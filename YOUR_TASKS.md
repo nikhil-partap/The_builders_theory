@@ -58,8 +58,15 @@ cd C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server
 
 ## 3. Going public
 
-- [ ] **Put the landing page online** (your call, since it makes the site public): GitHub repo Settings, Pages, deploy from `main` with the `/site` folder. Then tell Claude the address, so the share-card links can be made absolute.
-- [ ] **Approve a short privacy page.** The app collects phone numbers, so Claude can write a plain one-page privacy notice. You review it before it goes live.
+Two sessions are making it production-ready now:
+- **The app session** is adding: a loading screen, a responsive layout, navigation, a request status page with cancel, hospital search and location, a Hindi/English toggle, donor opt-out, a hospital desk view behind sign-in, rate limits, donor phone verification and data deletion.
+- **The landing page session** is rebuilding the site so it's served at https://raktdoot.serverpod.space/, with the app moving to `/app/`. That replaces the GitHub Pages idea.
+
+Your part:
+- [ ] **Review the draft `site/privacy.html` and `site/terms.html`** when they land. They cover phone numbers, AI calls, consent and deletion. Claude isn't a lawyer, so read them before going public.
+- [ ] **Give a real contact email** for the "partner with us" form, to replace the placeholder.
+- [ ] **Decide on donor phone verification.** If it needs a paid SMS provider or uses Sarvam call credits, the app session will ask you first.
+- [ ] **Decide when real blood banks may be called.** Until a bank agrees to receive AI calls, the app stays in pilot mode: real bank names on screen, but calls only to your `demoBankNumber` teammate.
 - [ ] **Watch your Sarvam credits.** The number is ₹59 a month, and calls cost credits. Top up before demo day if you're low.
 
 ## 4. Demo day
