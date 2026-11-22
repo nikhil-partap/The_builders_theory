@@ -251,17 +251,33 @@
             <div class="field"><label for="dGroup">Blood group</label>
               <select id="dGroup" name="group" aria-describedby="dGroup-err">
                 <option value="">Pick one</option>
-                <option>O−</option><option>O+</option><option>A−</option><option>A+</option><option>B−</option><option>B+</option><option>AB−</option><option>AB+</option>
+                <option value="O-">O−</option><option value="O+">O+</option><option value="A-">A−</option><option value="A+">A+</option><option value="B-">B−</option><option value="B+">B+</option><option value="AB-">AB−</option><option value="AB+">AB+</option>
               </select>
               <p class="field__error" id="dGroup-err" hidden>Pick your blood group.</p></div>
-            <div class="field rd-dform__wide"><label for="dPhone">Mobile number</label>
+            <div class="field"><label for="dArea">Area</label>
+              <input id="dArea" name="area" type="text" autocomplete="address-level2" placeholder="Sector 14, Gurugram" aria-describedby="dArea-err">
+              <p class="field__error" id="dArea-err" hidden>Write your area, like Sector 14, Gurugram.</p></div>
+            <div class="field"><label for="dPhone">Mobile number</label>
               <input id="dPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" aria-describedby="dPhone-err">
               <p class="field__error" id="dPhone-err" hidden>Write a 10-digit mobile number.</p></div>
             <label class="rd-consent rd-dform__wide"><input id="dConsent" type="checkbox" aria-describedby="dConsent-err"><span>I agree to AI voice calls about blood requests near me. Pressing 9 on a call stops them.</span></label>
             <p class="field__error rd-dform__wide" id="dConsent-err" hidden>Tick the box so we are allowed to call you.</p>
-            <div class="btn-row rd-dform__wide"><button class="btn btn--primary" type="submit">Sign up as a donor</button></div>
+            <div class="btn-row rd-dform__wide"><button class="btn btn--primary" type="submit" id="donorBtn">Sign up as a donor</button></div>
             <p class="rd-dform__done rd-dform__wide" id="donorDone" role="status" hidden></p>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rd-phonetry" id="phone" aria-labelledby="phone-h">
+    <div class="wrap">
+      <div class="rd-qr-card">
+        <div class="rd-qr" id="qr" role="img" aria-label="QR code that opens the RaktDoot donor sign-up"></div>
+        <div class="rd-qr-card__copy">
+          <h2 id="phone-h">Try it on your phone</h2>
+          <p class="t-lead muted">Scan the code, sign up as a donor in the app, and keep your phone close. When a request near you matches your blood group, the RaktDoot agent calls you.</p>
+          <p class="rd-qr-card__link t-small"><a id="qrLink" href="#">Open the donor sign-up</a></p>
         </div>
       </div>
     </div>
@@ -289,7 +305,7 @@
       <div class="grid">
         <div class="section-head span-4"><h2 id="faq-h">Questions</h2></div>
         <div class="faq span-7 start-6">
-          <div class="faq__item"><h3>Is RaktDoot live?</h3><p>Not yet. It is a hackathon prototype built on Flutter and Serverpod, and the demo above places no real calls.</p></div>
+          <div class="faq__item"><h3>Is RaktDoot live?</h3><p>Not yet. It is a hackathon prototype built on Flutter and Serverpod. The demo above places no real calls; donor sign-ups go to the prototype's server.</p></div>
           <div class="faq__item"><h3>Can someone use it to scam donors?</h3><p>Every request is checked with the hospital first, donor numbers stay hidden, and the agent never asks anyone for money.</p></div>
           <div class="faq__item"><h3>Why call banks before donors?</h3><p>Donated blood is tested before use, which takes hours. A bank can hand over a tested unit today.</p></div>
           <div class="faq__item"><h3>Which languages does it speak?</h3><p>Hindi and English at launch. More Indian languages come through Gnani's voice models.</p></div>
@@ -335,6 +351,7 @@
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
 <script type="module" src="assets/diagrams/mount.js"></script>
-<script type="module" src="page.js"></script>
+<script src="assets/qrcode.js" defer></script>
+<script type="module" src="page.js?v=15"></script>
 </body>
 </html>
