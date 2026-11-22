@@ -33,7 +33,7 @@ The app's code lives in `C:\Users\nikhi\Desktop\raktdoot` (local git only). The 
   - `sarvamConnectionId` (from the rented number)
   - `sarvamAgentNumber` (the rented number in +91 format)
   - `callbackToken` (any long random string you make up)
-  - `demoBankNumber` (the teammate who plays the blood bank)
+  - `demoBankNumber` (the teammate who plays the blood bank, 10 digits)
   - finally `voiceProvider` = `sarvam`
 
   Then run `serverpod cloud deploy`. If any one is missing, the app quietly keeps using simulated calls.
