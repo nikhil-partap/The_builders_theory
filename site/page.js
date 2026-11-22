@@ -293,7 +293,7 @@ $('#donorForm').addEventListener('submit', async (e) => {
   donorBtn.textContent = 'Signing you up…';
   try {
     const firstName = await callServer('donor', 'register', args);
-    note(`Thanks, ${firstName}. You are signed up as a ${pretty(args.bloodGroup)} donor near ${args.area}. When a patient nearby needs your group, the RaktDoot agent will call you. Press 9 on any call to stop.`);
+    note(`Thanks, ${firstName}. You are signed up as ${/^[AO]/.test(args.bloodGroup) ? 'an' : 'a'} ${pretty(args.bloodGroup)} donor near ${args.area}. When a patient nearby needs your group, the RaktDoot agent will call you. Press 9 on any call to stop.`);
     $('#donorForm').reset();
   } catch (err) {
     const id = err.kind === 'server' && FIELD_IDS[err.data.field];
