@@ -13,11 +13,13 @@ Claude sessions are doing the coding and deployment. These steps need you: your 
 
 - [ ] **Claim Serverpod Cloud credits** (30-day free trial): http://serverpod.dev/to/hackbriven-console
 - [ ] **Create a project** in the Cloud Console. Name it `raktdoot` and **turn the database on**.
-- [ ] **Sign in from the app folder** when the deploy session asks. It opens your browser; you finish the sign-in.
+- [ ] **Sign in from the server folder.** The deploy session is ready and waiting for this. It opens your browser; you finish the sign-in.
   ```powershell
-  cd C:\Users\nikhi\Desktop\raktdoot
+  cd C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server
   serverpod cloud auth login
   ```
+  If `serverpod` isn't found, use `dart pub global run serverpod_cli:serverpod_cli cloud auth login` instead.
+- [ ] **Tell the deploy session you're signed in** (in its own chat). It then launches, rebuilds, tests the live app and reports the URLs.
 - [ ] **Join the hackathon Discord**: http://serverpod.dev/to/hackbriven-discord
   - Ask the organisers whether code written before the event is allowed. That decides whether this app can be used as it is.
 
@@ -28,11 +30,13 @@ Claude sessions are doing the coding and deployment. These steps need you: your 
   1. an Inya API key
   2. your outbound calling number registered (their trigger-call API needs their account manager for this)
   3. whether call results can be sent to our server automatically (a webhook)
-- [ ] **When you get the key, store it yourself.** Never paste it into a chat or a file.
+- [ ] **Confirm the trigger-call field names with Gnani.** The code currently guesses `agent_id`, `phone_number`, `variables`, `callback_url` and `metadata`.
+- [ ] **Once you have access, store each value yourself** from the server folder. Never paste them into a chat or a file. Run this once per name, entering the value when asked:
   ```powershell
   serverpod cloud password set gnaniApiKey
   ```
-  Then tell the deploy session it's set. It redeploys and switches from simulated to real calls.
+  The names are `gnaniApiKey`, `gnaniTriggerUrl`, `gnaniAgentId`, `gnaniCallbackToken` (any long random string you make up), and `demoBankNumber` (the teammate's phone that plays the blood bank). Last, set `voiceProvider` to `gnani`. Until all of these are set, the app keeps using simulated calls.
+  Then tell the deploy session. It redeploys with real calls. Bank calls only ever dial `demoBankNumber`, never a real blood bank.
 - [ ] **Backup if Gnani is slow:** make a Twilio or Exotel trial account and verify your own phone number. Tell the deploy session which one you picked.
 - [ ] **Claim Adaption credits** (mandatory per the guide): https://adaptionlabs.ai/app/auth/referral?ref=hackbriven-hackathon
 
@@ -49,6 +53,7 @@ Claude sessions are doing the coding and deployment. These steps need you: your 
 - [ ] **Two phones:** one teammate plays "blood bank 1" (answers the AI and says no stock), one plays the donor if no judge signs up.
 - [ ] **Only call people who opted in:** teammates and judges who ticked consent. Never let the agent call a real blood bank. This keeps us within TRAI's automated-call rules.
 - [ ] **After deployment, rehearse once end to end** and screen-record a clean run as backup.
+  - Careful: the live server waits 7 days before calling the same donor again. Rehearsing with a teammate as donor on the live server blocks them for a week, so keep separate donor numbers for rehearsal and the real demo, or ask the deploy session to reset the cooldown before demo day.
 - [ ] **Print or show the QR code** to the donor sign-up. Claude adds it to the deck's last slide once the live address exists.
 
 ## 5. Housekeeping
