@@ -26,15 +26,22 @@ The deploy session couldn't set Cloud passwords because its permissions blocked 
 cd C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server
 ```
 
-- [ ] **Create a workspace API key** in Sarvam (indus.sarvam.ai, Settings or API keys), and note your org id and workspace id.
-- [ ] **Set each password** with `serverpod cloud password set NAME`, typing the value when asked. Never paste keys into a chat or a file.
-  - `sarvamApiKey`, `sarvamOrgId`, `sarvamWorkspaceId`
-  - `sarvamAppId` = `Conversatio-d82f8dfb-3fe6`
-  - `sarvamAppVersion` = `2`
-  - `sarvamConnectionId` and `sarvamAgentNumber` (+91 format), from your rented number in Sarvam's Phone numbers page
-  - `callbackToken` (any long random string you make up)
-  - `demoBankNumber` (the teammate who plays the blood bank, 10 digits)
-  - **last**, `voiceProvider` = `sarvam`
+- [ ] **Create a workspace API key** at https://indus.sarvam.ai/samvaad/settings/api-key. None exists yet.
+- [ ] **Set each password** with `serverpod cloud password set NAME`, typing the value when asked. Never paste the API key into a chat or a file. The deploy session already read the non-secret values from your dashboard:
+
+  | Name | Value |
+  |---|---|
+  | `sarvamApiKey` | the key you just created (secret) |
+  | `sarvamOrgId` | `01a20193-5b6a-704c-84bc-bc7f07b793c1` |
+  | `sarvamWorkspaceId` | `01a20193-5b71-7a82-9c04-b0b976790ff1` |
+  | `sarvamAppId` | `Conversatio-d82f8dfb-3fe6` |
+  | `sarvamAppVersion` | `2` |
+  | `sarvamConnectionId` | `62993e64-c3-61ecb57c-6c04` |
+  | `sarvamAgentNumber` | `+917965861220` |
+  | `callbackToken` | any long random string you make up (secret) |
+  | `demoBankNumber` | the teammate who plays the blood bank, 10 digits |
+  | `donorCooldownMinutes` | optional: e.g. `5` while rehearsing, so teammates aren't locked out for 7 days. Remove it before demo day. |
+  | `voiceProvider` | `sarvam` (**set this last**) |
 - [ ] **Deploy:** `serverpod cloud deploy`. If any password is missing, the app quietly stays on simulated calls.
 - [ ] **Tell the deploy session it's done.** It runs one live test with you: the "bank" teammate says no stock, then the "donor" teammate's phone rings and says yes.
 
@@ -57,7 +64,7 @@ cd C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server
 
 - [ ] **Two teammates with phones:** one plays "blood bank 1" (says no stock), one plays the backup donor if no judge signs up.
 - [ ] **Only call people who opted in:** teammates and judges who ticked consent. Never let the agent call a real blood bank. This keeps us within TRAI's automated-call rules.
-- [ ] **Mind the 7-day donor cooldown:** a number used as a donor in rehearsal can't be called again for a week. Use different donor numbers for rehearsal and the real demo, or ask the deploy session to reset the cooldown.
+- [ ] **Mind the 7-day donor cooldown:** a number used as a donor can't be called again for a week. For rehearsals, set `donorCooldownMinutes` (see step 1), then remove it before demo day.
 - [ ] **Rehearse once end to end** and screen-record a clean run as a backup.
 - [ ] **QR code** for https://raktdoot.serverpod.space/#/donor: ask Claude to add it to the deck's last slide, and print it.
 
