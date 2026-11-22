@@ -24,7 +24,17 @@ The app's code lives in `C:\Users\nikhi\Desktop\raktdoot` (local git only). The 
 
 - [ ] **Rent a Sarvam phone number**: Phone numbers, then Rent from Sarvam. ₹59 a month at the launch price, plus about ₹0.2 per 30 seconds of calls, from your Sarvam credits.
 - [ ] **Create a workspace API key** in Sarvam's settings, and note your org id and workspace id (shown with the API key).
-- [ ] **Store them yourself** from `C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server`, one `serverpod cloud password set NAME` each. The deploy session will give you the exact names; expect `sarvamApiKey`, `sarvamOrgId`, `sarvamWorkspaceId`, `sarvamConnectionId`, `sarvamAgentNumber`, plus `demoBankNumber`, then `voiceProvider` = `sarvam`. Then `serverpod cloud deploy`.
+- [ ] **Store them yourself** from `C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server`, one `serverpod cloud password set NAME` each. The names:
+  - `sarvamApiKey`, `sarvamOrgId`, `sarvamWorkspaceId`
+  - `sarvamAppId` = `Conversatio-d82f8dfb-3fe6`
+  - `sarvamAppVersion` = `2`
+  - `sarvamConnectionId` (from the rented number)
+  - `sarvamAgentNumber` (the rented number in +91 format)
+  - `callbackToken` (any long random string you make up)
+  - `demoBankNumber` (the teammate who plays the blood bank)
+  - finally `voiceProvider` = `sarvam`
+
+  Then run `serverpod cloud deploy`. If any one is missing, the app quietly keeps using simulated calls.
 - [ ] **Test-call yourself first** with the agent's Test agent button in the Sarvam dashboard.
 
 **Gnani fallback (only if Sarvam doesn't work out):**
