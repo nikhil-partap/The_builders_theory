@@ -8,7 +8,7 @@ Claude sessions do the coding and deployment. These steps need you: your account
 - the Sarvam caller in the code, hardened
 - the landing page connected to the live API
 
-**Live now** (calls are still simulated until step 1 is finished):
+**Live now, with real Sarvam calls switched on:**
 - Web app: https://raktdoot.serverpod.space/
 - Donor sign-up (the QR target): https://raktdoot.serverpod.space/#/donor
 - API: https://raktdoot.api.serverpod.space/
@@ -18,7 +18,9 @@ The app's code is in `C:\Users\nikhi\Desktop\raktdoot` (local git only).
 
 ---
 
-## 1. Turn on real AI calls (top priority)
+## 1. Turn on real AI calls
+
+**Done:** the passwords are set and the live server accepted them. Only the live test is left (the last box below).
 
 The deploy session couldn't set Cloud passwords because its permissions blocked it, so you run these. Use the exact commands it gives you in its chat. Open a terminal in the server folder:
 
