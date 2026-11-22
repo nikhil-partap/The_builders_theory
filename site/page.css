@@ -5,6 +5,14 @@
 ::selection { background: color-mix(in srgb, var(--accent) 18%, transparent); }
 html { caret-color: var(--accent); }
 
+/* <picture> wrappers (WebP with a JPEG fallback) stay out of layout, so the kit's
+   `.frame > .frame__img` and `.hero__media > img` rules keep working on the <img> */
+.rd-pic { display: contents; }
+:is(.frame, .panel) > .rd-pic > .frame__img { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+@media (max-width: 1023px) {
+  .hero__media > .rd-pic > img { object-position: var(--ly-pos-phone, var(--ly-pos, 50% 50%)); }
+}
+
 /* ---------- hero: the corridor photograph with the app on a phone ---------- */
 .rd-media { isolation: isolate; }
 .rd-media::after {

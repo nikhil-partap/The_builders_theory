@@ -8,8 +8,14 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="RaktDoot: AI blood helpline for patients' families">
 <meta property="og:description" content="A voice agent that calls every blood bank within 25 km and holds the units for you.">
+<!-- Share scrapers want absolute URLs: after deploy, prefix og:image and twitter:image with the site origin. -->
+<meta property="og:image" content="share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RaktDoot: the AI helpline that finds blood in minutes, beside a hospital corridor">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23b3172b'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='17' font-weight='700' fill='%23fff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<meta name="twitter:image" content="share.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#ffffff">
 <meta name="site-kind" content="software">
 <meta name="page-type" content="software">
@@ -39,7 +45,7 @@
 <link rel="stylesheet" href="assets/ui/base.css">
 <link rel="stylesheet" href="assets/ui/voice/fragment.css">
 <link rel="stylesheet" href="assets/diagrams/diagram.css">
-<link rel="stylesheet" href="page.css?v=14">
+<link rel="stylesheet" href="page.css?v=15">
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script src="assets/backgrounds/backgrounds.js"></script>
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
@@ -83,7 +89,10 @@
         </div>
       </div>
       <div class="hero__media span-7 start-6 rd-media">
-        <img src="img/corridor.jpg" width="1280" height="1707" alt="A quiet hospital corridor with warm ceiling lights and a row of waiting chairs" style="--ly-pos: 30% 55%" fetchpriority="high" data-source="stand-in" data-subject="hospital corridor">
+        <picture class="rd-pic">
+          <source type="image/webp" srcset="img/corridor-800.webp 800w, img/corridor-1280.webp 1280w" sizes="(min-width: 1024px) 58vw, 100vw">
+          <img src="img/corridor.jpg" width="1280" height="1707" alt="A quiet hospital corridor with warm ceiling lights and a row of waiting chairs" style="--ly-pos: 30% 55%" fetchpriority="high" data-source="stand-in" data-subject="hospital corridor">
+        </picture>
         <div class="rd-phone" aria-label="The RaktDoot app during a call to a blood bank">
           <div class="rd-phone__screen">
             <div class="rd-phone__status"><span class="mono" data-clock>11:02</span><span class="rd-phone__notch" aria-hidden="true"></span><span class="rd-phone__sig" aria-hidden="true"></span></div>
@@ -177,7 +186,10 @@
           <p class="t-lead rd-why__lead">That is how much blood India discarded in five years<sup><a href="#src-1">1</a></sup>, while families phoned banks one by one. About 22% of banks rarely update the national stock portal<sup><a href="#src-2">2</a></sup>, so RaktDoot checks every listing by phone.</p>
         </div>
         <div class="frame frame--photo frame--portrait span-4 start-9 rd-why__photo">
+          <picture class="rd-pic">
+          <source type="image/webp" srcset="img/blood-bags-800.webp 800w, img/blood-bags-1280.webp 1280w" sizes="(min-width: 1024px) 34vw, 100vw">
           <img class="frame__img" src="img/blood-bags.jpg" width="1280" height="1707" alt="Two blood bags in sealed pouches marked donor and recipient" loading="lazy" data-source="stand-in" data-subject="blood bags">
+          </picture>
         </div>
       </div>
     </div>
@@ -220,7 +232,10 @@
     <div class="wrap">
       <div class="grid rd-donors__grid">
         <div class="frame frame--photo span-6 rd-donors__photo">
+          <picture class="rd-pic">
+          <source type="image/webp" srcset="img/donation-800.webp 800w, img/donation-1280.webp 1280w" sizes="(min-width: 1024px) 50vw, 100vw">
           <img class="frame__img" src="img/donation.jpg" width="1280" height="1058" alt="A donor's arm during a platelet donation, with a line running to sample tubes" loading="lazy" data-source="stand-in" data-subject="blood donation" style="object-position: 40% 50%">
+          </picture>
         </div>
         <div class="span-5 start-8 rd-donors__copy">
           <h2 id="donors-h">Donors get a call only when they can help</h2>
