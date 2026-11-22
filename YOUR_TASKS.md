@@ -22,7 +22,9 @@ The app's code lives in `C:\Users\nikhi\Desktop\raktdoot` (local git only). The 
 
 **We switched to Sarvam.** Gnani Agents rejects personal email addresses and this account has 0 credits for it. The RaktDoot calling agent is already built and committed (version 2) in your Sarvam dashboard (indus.sarvam.ai, Voice Agents, Agents, "RaktDoot"). The deploy session is adding a `SarvamCaller` to the app. The Gnani steps below are kept only as a fallback.
 
-- [ ] **Rent a Sarvam phone number**: Phone numbers, then Rent from Sarvam. ₹59 a month at the launch price, plus about ₹0.2 per 30 seconds of calls, from your Sarvam credits.
+- [ ] **Rent a Sarvam phone number**: Phone numbers, then Rent from Sarvam, then Get started. ₹59 a month at the launch price, plus about ₹0.2 per 30 seconds of calls, from your Sarvam credits.
+  - Sarvam first asks for identity verification: choose **Individual** and verify with PAN or Aadhaar. The account owner (Ashmeet Kaur) has to do this; Claude can't enter ID numbers.
+  - After renting, note the connection id and the number (in +91 format): they become `sarvamConnectionId` and `sarvamAgentNumber`.
 - [ ] **Create a workspace API key** in Sarvam's settings, and note your org id and workspace id (shown with the API key).
 - [ ] **Store them yourself** from `C:\Users\nikhi\Desktop\raktdoot\raktdoot\raktdoot_server`, one `serverpod cloud password set NAME` each. The names:
   - `sarvamApiKey`, `sarvamOrgId`, `sarvamWorkspaceId`
