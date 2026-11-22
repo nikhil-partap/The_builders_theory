@@ -1,0 +1,15 @@
+/* RaktDoot brand tokens for the taste-skill system: white ground, navy ink, blood red accent, Epilogue.
+   Linked after the kit's system.css and before assets/ui/base.css on every page. */
+:root {
+  --p-bg: #ffffff; --p-surface: #f4f4f2; --p-ink: #1f2b4d; --p-muted: #5f6984;
+  --p-accent: #b3172b; --p-accent-ink: #ffffff; --p-action: #b3172b; --p-action-ink: #ffffff;
+  --p-inv-bg: #1f2b4d; --p-inv-surface: #2c3859; --p-inv-ink: #ffffff; --p-inv-muted: #a2a8b8;
+  --p-inv-accent: #ffffff; --p-inv-accent-ink: #1f2b4d; --p-inv-action: #ffffff; --p-inv-action-ink: #1f2b4d;
+  --font-display: "Epilogue", system-ui, sans-serif;
+  --font-text: "Epilogue", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.045em;
+  --ly-scale: 0.97;
+}

@@ -1,0 +1,158 @@
+<!doctype html>
+<!--
+  DRAFT FOR REVIEW. NOT LEGAL ADVICE. Have a lawyer check this before launch.
+
+  Written from what the RaktDoot code does today (the donor sign-up, the request flow, AI calls through a
+  voice provider, call transcripts and logs on Serverpod Cloud). Decide or confirm each item below, then
+  delete this comment:
+    1. CONTACT: every mailto below points at privacy@example.com. Replace it with the team's real inbox.
+    2. LEGAL ENTITY: "RaktDoot" is used as the name of the operator. Add the registered company or the
+       founders' names and a postal address if you have them.
+    3. GRIEVANCE OFFICER: India's DPDP Act 2023 and its rules expect a named contact for complaints.
+       Add a name and address in "Contact us" when you have one.
+    4. RETENTION: the periods in "How long we keep it" (90 days for requests and call records; donor data
+       until opt-out) are proposals. Change them to what the system will actually do.
+    5. DELETION TIME: "within 30 days" in "Your choices" is a proposal.
+    6. PROVIDERS: names Serverpod Cloud (hosting) and "our voice-call provider". Name the provider in use
+       (Sarvam, Gnani or another) if you want to be specific, and check each one's data terms.
+    7. CALL RECORDING: the text says calls are transcribed and may be recorded by the voice provider.
+       Confirm whether audio is stored, where, and for how long.
+    8. OPT-OUT ON A CALL: the text does not promise an in-call opt-out (like "press 9"), because the code
+       does not have one yet. Add it here when it ships.
+    9. FAMILY PHONE NUMBER: "A phone number, if you give one" assumes the request flow may ask for one.
+       Remove that line if the app never collects it.
+   10. DONOR ANONYMITY IN THE APP: "a confirmed donor appears as Donor 1" matches the app's design.
+       Confirm the live app shows no donor names.
+-->
+<html lang="en-IN" data-type="software" data-radius="soft" data-buttons="solid">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy policy · RaktDoot</title>
+<meta name="description" content="What RaktDoot collects when you ask for blood or sign up as a donor, how AI calls work, and how to opt out or delete your data.">
+<link rel="canonical" href="https://raktdoot.serverpod.space/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RaktDoot">
+<meta property="og:url" content="https://raktdoot.serverpod.space/privacy.html">
+<meta property="og:title" content="RaktDoot privacy policy">
+<meta property="og:image" content="https://raktdoot.serverpod.space/share.jpg">
+<link rel="icon" href="https://raktdoot.serverpod.space/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="https://raktdoot.serverpod.space/apple-touch-icon.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="brand.css">
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="doc.css?v=2">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="nav__logo" href="./"><span class="mark mark--initial" aria-hidden="true">R</span>RaktDoot</a>
+    <div class="nav__actions" style="margin-left:auto"><a class="btn btn--primary" href="/app/#/">Find blood</a></div>
+  </div>
+</header>
+
+<main id="main" class="rd-docmain">
+  <article class="wrap rd-doc">
+    <h1>Privacy policy</h1>
+    <p class="rd-doc__meta">Last updated 22 November 2026</p>
+    <p class="rd-doc__lead">RaktDoot helps families find blood by calling blood banks and, when no bank has stock, donors who signed up. This page explains what we collect, why, who sees it, and how you can opt out or have it deleted.</p>
+
+    <nav class="rd-doc__toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#what-we-collect">What we collect</a></li>
+        <li><a href="#ai-calls">How AI calls work</a></li>
+        <li><a href="#how-we-use-it">How we use it</a></li>
+        <li><a href="#who-sees-it">Who sees it</a></li>
+        <li><a href="#how-long">How long we keep it</a></li>
+        <li><a href="#your-choices">Your choices</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="what-we-collect">What we collect</h2>
+    <h3>When you ask for blood</h3>
+    <ul>
+      <li>The blood group, the component and the number of units needed.</li>
+      <li>The hospital's name, which we use to find nearby blood banks.</li>
+      <li>A phone number, if you give one, so we can tell you where the blood is held.</li>
+    </ul>
+    <p>We do not ask for the patient's name or medical records.</p>
+    <h3>When you sign up as a donor</h3>
+    <ul>
+      <li>Your name, blood group and area.</li>
+      <li>Your mobile number.</li>
+      <li>The time you agreed to AI calls, and the times we last called you.</li>
+    </ul>
+    <h3>When we place a call</h3>
+    <ul>
+      <li>Who was called, when, and the outcome, for example "no stock" or "holding 2 units until 11:40".</li>
+      <li>A written transcript of the call. Our voice-call provider may also keep an audio recording while it processes the call.</li>
+    </ul>
+    <h3>When you visit this website</h3>
+    <p>The site uses no advertising or tracking cookies. Our hosting provider keeps standard server logs, such as IP addresses and the pages requested, to keep the service running and secure.</p>
+
+    <h2 id="ai-calls">How AI calls work</h2>
+    <p>RaktDoot's calls are made by an AI voice agent, not a person. Every call starts by saying it comes from RaktDoot's AI assistant. The agent asks blood banks about stock and asks them to hold units; it asks donors whether they can donate. It never asks anyone for money or for bank or card details.</p>
+    <p>We call a donor only after they have signed up and agreed to AI calls, only for their own blood group, only when the request is within about 10 km of them, at most once a week, and not for three months after they give blood.</p>
+
+    <h2 id="how-we-use-it">How we use it</h2>
+    <ul>
+      <li>To find, check and hold blood for a request.</li>
+      <li>To call donors who agreed to be called, when no bank has stock.</li>
+      <li>To show a family the progress of their request.</li>
+      <li>To prevent misuse, fix problems and improve the service.</li>
+    </ul>
+    <p>We do not sell personal data, and we do not use it for advertising.</p>
+
+    <h2 id="who-sees-it">Who sees it</h2>
+    <ul>
+      <li><strong>Families</strong> see the banks we called and the outcome. They never see a donor's name or number; a confirmed donor appears as "Donor 1", with a distance.</li>
+      <li><strong>Blood banks</strong> hear the details of a request on the call: the group, the component, the units and the hospital.</li>
+      <li><strong>Donors</strong> hear that a patient nearby needs their blood group, and where to go.</li>
+      <li><strong>Our service providers</strong> process data for us under contract: Serverpod Cloud hosts the service and its database, and our voice-call provider places the calls and turns speech into text.</li>
+      <li><strong>Authorities</strong>, if the law requires it.</li>
+    </ul>
+
+    <h2 id="how-long">How long we keep it</h2>
+    <ul>
+      <li>Requests, call outcomes and transcripts: 90 days, then deleted or made anonymous.</li>
+      <li>Donor details: until you opt out or ask us to delete them.</li>
+      <li>Server logs: as long as our hosting provider keeps them, usually a few weeks.</li>
+    </ul>
+
+    <h2 id="your-choices">Your choices</h2>
+    <h3>Stop the calls</h3>
+    <p>You can opt out of donor calls at any time. <a href="mailto:privacy@example.com?subject=Stop%20RaktDoot%20donor%20calls">Write to us</a> from any address with the mobile number you signed up with, and we stop calling it.</p>
+    <h3>See, correct or delete your data</h3>
+    <p>You can ask for a copy of what we hold about you, ask us to correct it, or ask us to delete it. <a href="mailto:privacy@example.com?subject=My%20RaktDoot%20data">Write to us</a> with your mobile number. We may call or message that number once to confirm the request is yours, and we act on it within 30 days.</p>
+    <h3>Withdraw consent</h3>
+    <p>Withdrawing your consent to AI calls is the same as opting out. It does not affect calls made before you withdrew it.</p>
+    <p>We handle personal data under India's Digital Personal Data Protection Act, 2023. If you are not satisfied with our answer, you may complain to the Data Protection Board of India.</p>
+
+    <h2 id="security">Security</h2>
+    <p>Data travels over encrypted connections and is stored with our hosting provider. Donor numbers are never sent to the RaktDoot app or shown on screen; only our servers use them to place calls. Only the people who run RaktDoot can reach the database.</p>
+
+    <h2 id="children">Age</h2>
+    <p>Donors must be at least 18 years old, the minimum age to give blood in India. We do not knowingly sign up anyone younger.</p>
+
+    <h2 id="changes">Changes to this policy</h2>
+    <p>If we change how we use your data, we will update this page and its date. For a significant change, we will tell signed-up donors before it takes effect.</p>
+
+    <h2 id="contact">Contact us</h2>
+    <p>For anything about your data or this policy, <a href="mailto:privacy@example.com">write to us</a>.</p>
+  </article>
+</main>
+
+<footer class="rd-docfoot">
+  <div class="wrap">
+    <span>&copy; 2026 RaktDoot</span>
+    <nav aria-label="Footer"><a href="./">Home</a><a href="privacy.html" aria-current="page">Privacy policy</a><a href="terms.html">Terms of use</a></nav>
+  </div>
+</footer>
+</body>
+</html>

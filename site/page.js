@@ -1,14 +1,19 @@
-// RaktDoot page script: the demo request, the donor form and the phone QR.
+// RaktDoot page script: links into the app, the sample call, the partner form and the donor QR.
 
-// ---- deployment config: fill these two after deploying ----
-// API_BASE: the Serverpod API server (no trailing slash), e.g. https://raktdoot.api.serverpod.space
-const API_BASE = 'https://raktdoot.api.serverpod.space';
-// APP_URL: the Flutter web app (no trailing slash). The QR opens APP_URL + '/#/donor'.
-const APP_URL = 'https://raktdoot.serverpod.space';
+// ---- where things live: edit these, every link on the page follows ----
+// SITE_URL: the public origin this site is served from (no trailing slash). The donor QR, read by a phone, uses it.
+const SITE_URL = 'https://raktdoot.serverpod.space';
+// Routes into the Flutter app, served under /app/ on the same origin.
+const ROUTES = {
+  findBlood: '/app/#/',   // start a blood request
+  donor: '/app/#/donor',  // donor sign-up
+  track: '/app/#/r/',     // a request's status page
+};
+// The inbox the "Partner with us" form writes to. REPLACE with the team's real address before launch.
+const PARTNER_EMAIL = 'partners@example.com';
 
-// The request demo below uses made-up banks, donors and calls; it sends nothing anywhere.
-// The donor form is real: it calls the Serverpod endpoint donor.register.
-const $ =(s, el = document) => el.querySelector(s);
+// The sample call below uses example banks, donors and voices; it calls nobody and sends nothing.
+const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -70,7 +75,7 @@ function reset() {
   $('#logTitle').textContent = `${pretty(state.group)} red cells · ${state.units} ${unitWord(state.units)}`;
   setState('Ready');
   findBtn.disabled = false;
-  findBtn.textContent = 'Find blood';
+  findBtn.textContent = 'Play the call';
 }
 
 const sleep = (ms, id) => new Promise((res, rej) => setTimeout(() => (id === runId ? res() : rej(new Error('cancelled'))), ms * (reduce.matches ? 0.5 : 1)));
@@ -117,7 +122,7 @@ async function run() {
   findBtn.disabled = true;
   findBtn.textContent = 'Calling…';
   setState('Calling', 'on');
-  announce('Demo started.');
+  announce('Sample call started.');
 
   try {
     await sleep(400, id);
@@ -192,7 +197,7 @@ async function run() {
       follow(gocard);
     }
     findBtn.disabled = false;
-    findBtn.textContent = 'Run it again';
+    findBtn.textContent = 'Play it again';
   } catch { /* a newer run replaced this one */ }
 }
 
@@ -218,109 +223,49 @@ $('#request').addEventListener('submit', (e) => {
 });
 setUnits(2);
 
-// ---- donor form: checked here first, then sent to Serverpod's donor.register ----
-// The same rules as the server, so most mistakes show before a round trip.
-const tests = {
-  dName: (v) => v.trim().length > 1,
-  dGroup: (v) => v !== '',
-  dArea: (v) => v.trim().length >= 3,
-  dPhone: (v) => /^[6-9]\d{9}$/.test(v.replace(/\D/g, '').replace(/^91(?=\d{10}$)/, '')),
-};
-// the server names fields by its parameter names
-const FIELD_IDS = { name: 'dName', bloodGroup: 'dGroup', area: 'dArea', phone: 'dPhone', consent: 'dConsent' };
-const done = $('#donorDone');
-const donorBtn = $('#donorBtn');
-$$('#donorForm .field__error').forEach((p) => { p.dataset.text = p.textContent; });
+// ---- links into the app: one place to change them (ROUTES above) ----
+$$('a[data-route]').forEach((a) => { if (ROUTES[a.dataset.route]) a.setAttribute('href', ROUTES[a.dataset.route]); });
 
-function mark(id, ok, message) {
+// ---- partner form: checked here, then opens the visitor's email app with the message filled in ----
+const pTests = {
+  pName: (v) => v.trim().length > 1,
+  pOrg: (v) => v.trim().length > 1,
+  pKind: (v) => v !== '',
+  pContact: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || /^(?:\+?91)?[6-9]\d{9}$/.test(v.replace(/[\s-]/g, '')),
+};
+function mark(id, ok) {
   const el = $(`#${id}`); const err = $(`#${id}-err`);
-  if (ok) { el.removeAttribute('aria-invalid'); err.hidden = true; err.textContent = err.dataset.text; } else {
-    el.setAttribute('aria-invalid', 'true');
-    err.textContent = message || err.dataset.text;
-    err.hidden = false;
-  }
+  if (ok) { el.removeAttribute('aria-invalid'); err.hidden = true; } else { el.setAttribute('aria-invalid', 'true'); err.hidden = false; }
   return ok;
 }
-function note(text, isError) {
-  done.textContent = text;
-  done.classList.toggle('is-error', !!isError);
-  done.hidden = false;
-}
-Object.keys(tests).forEach((id) => $(`#${id}`).addEventListener('input', () => { if ($(`#${id}`).getAttribute('aria-invalid')) mark(id, tests[id]($(`#${id}`).value)); }));
-$('#dGroup').addEventListener('change', () => { if ($('#dGroup').getAttribute('aria-invalid')) mark('dGroup', tests.dGroup($('#dGroup').value)); });
-$('#dConsent').addEventListener('change', () => { if ($('#dConsent').checked) mark('dConsent', true); });
-
-// One Serverpod method call, the way its generated client sends it:
-// POST {API_BASE}/{endpoint}/{method} with the arguments as a JSON object.
-// The body goes as text/plain (as Serverpod's own web client does), so the browser skips a CORS preflight.
-async function callServer(endpoint, method, args) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 15000);
-  let res;
-  try {
-    res = await fetch(`${API_BASE}/${endpoint}/${method}`, { method: 'POST', body: JSON.stringify(args), signal: ctrl.signal });
-  } catch (err) {
-    throw Object.assign(new Error('unreachable'), { kind: 'network', cause: err });
-  } finally {
-    clearTimeout(timer);
-  }
-  const text = await res.text();
-  let data = null;
-  try { data = JSON.parse(text); } catch { /* not JSON */ }
-  if (res.ok) return data ?? text;
-  // A thrown serializable exception arrives as 400 {"className": "...", "data": {...fields}}
-  if (data && typeof data === 'object' && data.className) throw Object.assign(new Error(data.data?.message || data.className), { kind: 'server', className: data.className, data: data.data || {} });
-  throw Object.assign(new Error(`HTTP ${res.status}`), { kind: 'http', status: res.status });
-}
-
-$('#donorForm').addEventListener('submit', async (e) => {
+Object.keys(pTests).forEach((id) => {
+  const el = $(`#${id}`);
+  el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => { if (el.getAttribute('aria-invalid')) mark(id, pTests[id](el.value)); });
+});
+$('#partnerForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  if (donorBtn.getAttribute('aria-busy') === 'true') return;
+  const done = $('#partnerDone');
   let first = null;
-  Object.entries(tests).forEach(([id, t]) => { if (!mark(id, t($(`#${id}`).value)) && !first) first = id; });
-  if (!mark('dConsent', $('#dConsent').checked) && !first) first = 'dConsent';
+  Object.entries(pTests).forEach(([id, t]) => { if (!mark(id, t($(`#${id}`).value)) && !first) first = id; });
   if (first) { done.hidden = true; $(`#${first}`).focus(); return; }
-
-  const args = {
-    name: $('#dName').value.trim(),
-    bloodGroup: $('#dGroup').value.replace(/−/g, '-'), // the select shows a minus sign; the server wants ASCII "O-"
-    area: $('#dArea').value.trim(),
-    phone: $('#dPhone').value.trim(),
-    consent: $('#dConsent').checked,
-  };
-  done.hidden = true;
-  donorBtn.setAttribute('aria-busy', 'true');
-  donorBtn.textContent = 'Signing you up…';
-  try {
-    const firstName = await callServer('donor', 'register', args);
-    note(`Thanks, ${firstName}. You are signed up as ${/^[AO]/.test(args.bloodGroup) ? 'an' : 'a'} ${pretty(args.bloodGroup)} donor near ${args.area}. When a patient nearby needs your group, the RaktDoot agent will call you. Press 9 on any call to stop.`);
-    $('#donorForm').reset();
-  } catch (err) {
-    const id = err.kind === 'server' && FIELD_IDS[err.data.field];
-    if (id) {
-      mark(id, false, err.data.message);
-      $(`#${id}`).focus();
-    } else if (err.kind === 'network') {
-      note('We could not reach the RaktDoot server, so you are not signed up yet. Check your connection and try again in a minute.', true);
-    } else {
-      note(`The server could not sign you up just now${err.status ? ` (error ${err.status})` : ''}. Try again in a minute.`, true);
-    }
-  } finally {
-    donorBtn.removeAttribute('aria-busy');
-    donorBtn.textContent = 'Sign up as a donor';
-  }
+  const v = (id) => $(`#${id}`).value.trim();
+  const subject = `Partnering with RaktDoot: ${v('pOrg')}`;
+  const details = [`Name: ${v('pName')}`, `Organisation: ${v('pOrg')}`, `We are: ${v('pKind')}`];
+  if (v('pCity')) details.push(`City: ${v('pCity')}`);
+  details.push(`Contact: ${v('pContact')}`);
+  const body = `${details.join('\n')}\n\n${v('pMsg') || 'We would like to talk about using RaktDoot.'}`;
+  window.location.href = `mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  done.textContent = `Your email app should open with the message ready to send. If nothing opened, write to ${PARTNER_EMAIL}.`;
+  done.hidden = false;
 });
 
-// ---- try it on your phone: a QR to the app's donor screen, drawn here (assets/qrcode.js, no CDN) ----
+// ---- the donor QR: opens the app's sign-up on a phone, drawn here (assets/qrcode.js, no CDN) ----
 function drawQr() {
-  const url = `${APP_URL}/#/donor`;
-  const link = $('#qrLink');
-  link.href = url;
-  link.textContent = url.replace(/^https?:\/\//, '');
   const box = $('#qr');
-  if (typeof window.qrcode !== 'function') { box.hidden = true; return; }
+  if (!box) return;
+  if (typeof window.qrcode !== 'function') { box.closest('.rd-qr-mini').hidden = true; return; }
   const qr = window.qrcode(0, 'M');
-  qr.addData(url);
+  qr.addData(SITE_URL + ROUTES.donor);
   qr.make();
   const n = qr.getModuleCount();
   let d = '';
